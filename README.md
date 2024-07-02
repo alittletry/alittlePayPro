@@ -1,39 +1,35 @@
 
-# ALittlePayPro - 一个开源免费的挂机支付监控项目,支持支付宝和微信、QQ钱包、银行卡挂机支付 （代码正在开发中）
-# 核心代码已剔除,因本项目被灰黑产利用，决定删除核心，保留管理体系
+# ALittlePayPro - 一个开源免费的多用户挂机支付监控项目,支持支付宝和微信、QQ钱包、银行卡挂机支付 （代码正在开发中）
+# 此系统特色：多商户模式，会员组收费，运营级，开源
 ```
-拒绝第三方易支付圈钱跑路,拒绝游戏支付回收困难，拒绝码支付收费和云端挂机，作者随时都能替换二维码割韭菜，自建支付系统和自己挂机，代码完全透明，没有暗门，保证笔笔资金都由自己掌控
+拒绝第三方易支付圈钱跑路,拒绝游戏支付回收困难，拒绝码支付收费，代码开源无后门
 ```
 
-ALittlePay是一个基于Thinkphp后端框架和Bootstrap前端框架开发的个人挂机支付系统。它是专门个人用户使用APP监控支付而创建的，以服务无法开通商家收款的用户。ALittlePay保持了Thinkphp的原始特性，允许开发人员以最小的学习成本和努力编写更多模块
+ALittlePayPro是一个基于PHP后端和webman框架和Bootstrap前端框架开发的个人/多商户挂机支付系统。它是专门个人用户使用APP监控支付而创建的，以服务无法开通商家收款的用户。也可以运营多商户使用
           
-- 基于Thinkphp后端框架
+- 基于Webman后端框架
 - 基于Bootstrap前端框架
-- 精简的admin&api应用分类
-- 自动且精准判断`微信`或`支付宝`收款通知
+- 精简的admin&api&user应用分类
+- 自动且精准判断`微信`、`支付宝`、`QQ钱包`、`银行卡`收款通知
 - 安全的接口权限审计
 - 独特的数据锁让数据无误差记录
 - Redis应用让数据处理更加高效
-- 配套APP监听,无绑定无授权,真正的免费(仅免费使用,内置监听插件为第三方插件,约束不可开源代码)
+- 配套APP监听,无绑定无授权,真正的免费(APP端为uniapp开发，也是开源的，PC端暂无想法开源)
 - 完善的交易分析,带有详细的支付调试功能和记录
-- 独特的1+1+N监控设计,1个网站1个用户N台设备轮训收款,并带有独特的价格浮动判断
+- 独特的1+N+N监控设计,1个网站 + N个用户 + N台设备轮训收款,并带有独特的价格浮动判断
 ## 演示图
 -后台&APP
-![image](https://user-images.githubusercontent.com/110278132/182033038-dc185fe5-02c2-490d-8786-33580da2f0b8.png)
-![image](https://user-images.githubusercontent.com/110278132/182033076-c45f0159-ec81-475e-95df-0c777b42f9d2.png)
-![image](https://user-images.githubusercontent.com/110278132/182033101-2a0be17d-b606-4f40-bfce-8803e3f8c0db.png)
 
-![15f260aa9b3192c9439053f010c46ae](https://user-images.githubusercontent.com/110278132/182033138-1a69858d-be10-4e63-a271-f1d2da06bdc4.jpg)
 
 ## Doc 
-- [中文文档(暂未开放)](https://github.com/alittletry/alittlepay)
+- [中文文档(暂未开放)]
 
 ## 推荐服务器（虚拟空间不支持）
 服务器环境推荐要求：
 
 ```
 Nignx/Apache/IIS
-PHP 7.1 ~ 7.4
+PHP 8.1
 MySQL 5.7
 Redis 且php安装redis拓展
 ```
@@ -43,7 +39,7 @@ Redis 且php安装redis拓展
 
     打开命令行，输入以下命令
     ```bash
-    git clone https://github.com/alittletry/alittlepay.git
+    git clone https://github.com/alittletry/alittlePayPro.git
     cd alittlepay
     
     或者
@@ -51,27 +47,14 @@ Redis 且php安装redis拓展
     ```
     
 2. 配置数据库：
-    * 后端数据库参考TP6填写参数
+    * 后端数据库参考webman填写参数
     * 将根目录下.dev.env文件改名为.env并将文件中中数据库和redis配置进行填写
     * 将根目录下init.sql文件导入自己的数据库中
 
 
 3. 打开后台
 
-    注意：1 2步完成后，需要设置网站运行目录为public并且配置对应的thinkphp伪静态，具体参考下方图片(Nginx为例)
-    ![image](https://user-images.githubusercontent.com/110278132/182032968-9fb9e7b9-67c6-4952-9bd7-3687d19b4cbd.png)
-    ![image](https://user-images.githubusercontent.com/110278132/182032974-acba2e47-c4a9-496d-ac6e-dbb4a2e6d325.png)
-    ```bash
-    location / {
-	if (!-e $request_filename){
-		rewrite  ^(.*)$  /index.php?s=$1  last;   break;
-	}
-    }
-    ```
-    ```bash
-    打开 http://你的域名/admin/login/login
-    默认账号密码：admin/123456
-    ```
+
     
 4. 配置后台
    ```bash
